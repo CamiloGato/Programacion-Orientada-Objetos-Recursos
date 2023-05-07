@@ -1,0 +1,677 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Curso Programación Orientada a Objetos aplicado a Videojuegos con Unity y C#</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3519ed7e-ceff-4dde-ad15-437846a3dc00" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/woodcuts_sekka_2.jpg" style="object-position:center 80%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🥏</span></div><h1 class="page-title">Curso Programación Orientada a Objetos aplicado a Videojuegos con Unity y C#</h1></header><div class="page-body"><nav id="84f06edf-2adb-4690-a2d3-c22a1744d7d2" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#89a6082b-de00-4eaa-9ab0-6699c9a56e52">Introducción a la Programación Orientada a Objetos.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f3451709-a9c8-4b30-96bd-df2434a31c8b">Objetos como una forma de programar.</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#534153dd-0ba3-46bc-a823-ff87dd49ed73">Conceptos en Programación Orientada a Objetos</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c6067a70-8145-45bf-ba9e-d021859da0e4">Pilares de la Programación Orientada a Objetos</a></div></nav><h1 id="89a6082b-de00-4eaa-9ab0-6699c9a56e52" class="">Introducción a la Programación Orientada a Objetos.</h1><p id="7076bc1f-605a-448a-84e6-cb3a84b57150" class="">La programación orientada a objetos es un paradigma, donde el paradigma es la “forma” en la cual programamos, y así como su nombre lo dice, la forma en la que desarrollaremos o programaremos software es utilizando objetos.</p><h2 id="f3451709-a9c8-4b30-96bd-df2434a31c8b" class="">Objetos como una forma de programar.</h2><p id="54642d3b-24da-4007-86f8-a80e263e8fe1" class="">Cuando me refiero a que desarrollaremos software utilizando objetos, es porque deberá de existir una base o un modelo del cual se crean estos objetos, una forma de simular el comportamiento de ciertos “objetos” físicos en el desarrollo, como por ejemplo, en nuestro mundo físico nos encontramos con los Muebles, los cuales originalmente pueden ser cualquier cosa, un sofá, sofa-cama, mesa de centro, entre otros. Pero todos los muebles tienen algo en común y es en primer lugar (caso base) el material del cuál está elaborado, ¿Metal? ¿ Madera?, hay muchas. Pero también entran en juego otros factores más pequeños en el proceso de desarrollo del mueble, por ejemplo, la cantidad de clavos que se necesita para construirlo, una paleta de colores de referncia, el nivel de qué tan confortable es  (Un sofa hecho de madera pura tendría ¿un nivel de 3? lol). A esto en programación orientada a objetos se le llama “propiedades”, pero en fin, sigamos con nuestro ejemplo; cuando estamos elaborando un mueble debemos de tener una base para todos sus posibles “derivados” o “creaciones”, por ejemplo, una “silla” estará hecha de madera, necesitará 20 clavos, su color será negro, azul, …, y así llenaremos las propiedades o caracteristicas de este mueble denominado “silla” a partir de la base que se nos proporciona “Mueble”.</p><p id="6d68f532-03de-4d1e-937f-fdf8eda34809" class="">Ok, está muy bien, con esto puedo decorar mi casa, pero, te deberás de estar preguntando, <strong>¿Cómo se ve involucrado en videojuegos o programación?</strong>, y para responder a esta pregunta pondré el siguiente ejemplo.</p><p id="f39ecfd2-fe29-45fa-bcbd-11cb94f1a87a" class="">Supongamos que estas desarrollando un videojuego, en el cual tu personaje principal puede pertenecer a distintos tipos de razas, unas más fuertes que otras, por ejemplo,</p><p id="2b490b8c-5d6b-4d2a-89de-761b24ee2a1b" class="">Partimos de una base o un modelo del cual podremos crear las posibles razas, con esto, me refiero a una representación humanoide.</p><figure id="c46418c4-62ad-4298-9224-1d26909fa932" class="image"><a href="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Base.png"><img style="width:1024px" src="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Base.png"/></a></figure><blockquote id="6f163b9c-4077-4cc7-8007-8d7029b87dfc" class="">Imagen en representación de nuestra base humanoide para la creación de distintas razas.</blockquote><p id="1eb901ae-bfdd-4457-a933-9004e180147a" class="">Luego nos veremos en la necesidad de crear distintas razas con distintas características, como pueden ser las siguientes.</p><div id="e0f555ee-1d60-4962-8af3-d9cadc176d64" class="column-list"><div id="d546aab9-3f0a-4ad4-a390-ec48de0c8698" style="width:33.33333333333333%" class="column"><figure id="d9eb305c-5fa5-4f66-8a22-13510b0b0839" class="image"><a href="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_1.png"><img style="width:1024px" src="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_1.png"/></a></figure><blockquote id="29bfb353-0e78-4f4d-8524-68451e331cb5" class="">Un guerrero humano.</blockquote></div><div id="b9a5cb8b-ad2f-4e17-a44f-8c6d73eaffdd" style="width:33.33333333333333%" class="column"><figure id="27d7eea1-e188-436a-b5a1-ca57a6378233" class="image"><a href="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_2.png"><img style="width:1024px" src="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_2.png"/></a></figure><blockquote id="cc7d5348-10ac-46d3-9e61-60e348c2b7a7" class="">Una raza elfos.</blockquote></div><div id="7da661e1-d407-422c-8fa6-9d202b2451a7" style="width:33.33333333333333%" class="column"><figure id="c2c2eef4-1441-4c53-9211-c419d1278bbc" class="image"><a href="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_3.png"><img style="width:1024px" src="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_3.png"/></a></figure><blockquote id="f3e87510-d093-46dd-b166-84c91d209ba9" class="">Una raza ¿tanque?</blockquote></div></div><p id="71fe9cdb-eb66-4a01-87b7-5f79f4d91c69" class="">Aquí tenemos tres variantes, los cuales, son algo pobres en imaginación, pero representa nuestra idea, a partir de una base, lo cual se conoce como <strong>“Clase”</strong> en programación orientada a objetos, pudimos crear distintas variantes, conocidos como <strong>“Objetos”</strong>, si regresamos por un momento al ejemplo de los muebles, estos tenían unas características, pues, estas razas no se quedan atrás.</p><div id="fcb4986e-7205-44bf-91da-a70187733598" class="column-list"><div id="4c302897-bc4a-4261-b48c-900d47d031e7" style="width:33.33333333333333%" class="column"><figure id="ef6de2be-3708-43e0-8ab0-ac620642d6c7" class="image"><a href="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_1.png"><img style="width:1024px" src="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_1.png"/></a></figure><blockquote id="df5504f9-5a60-4491-bb19-b7ae7a6c3659" class=""><strong>Vida:</strong> 100
+<strong>Poder:</strong> 50
+<strong>Velocidad:</strong> 100</blockquote></div><div id="105916a0-7c93-4945-ae6a-158e1ace2194" style="width:33.33333333333333%" class="column"><figure id="bf86a85d-0017-4be7-b4ad-ae8ccdf2c572" class="image"><a href="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_2.png"><img style="width:1024px" src="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_2.png"/></a></figure><blockquote id="264cbf1e-88b1-4f65-a4b5-01bf83cd9ee0" class=""><strong>Vida: </strong>50
+<strong>Poder:</strong> 50
+<strong>Velocidad:</strong> 50</blockquote><p id="5c9b3851-15bd-4d4c-ac62-bc3a158629a0" class="">
+</p></div><div id="543d910d-5fcb-4645-8276-35d9598fcf98" style="width:33.33333333333333%" class="column"><figure id="0478274c-6cfc-4e74-8e5c-114e3d96fb89" class="image"><a href="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_3.png"><img style="width:1024px" src="Curso%20Programacio%CC%81n%20Orientada%20a%20Objetos%20aplicado%20a%203519ed7eceff4ddead15437846a3dc00/Character_3.png"/></a></figure><blockquote id="b6c4559f-3763-419e-bea4-12640e5263d2" class=""><strong>Vida:</strong> 150
+<strong>Poder: </strong>100
+<strong>Velocidad:</strong> 25</blockquote></div></div><p id="87cd0a08-537f-4909-b78a-4af47bcebb5f" class="">Las características aquí las tenemos representadas como Vida, Poder y velocidad; hay muchas características visuales en este ejemplo, pero es para que podamos diferenciar. Estas características harán que nuestro jugador sea más poderoso, menos poderoso, etc.</p><h2 id="534153dd-0ba3-46bc-a823-ff87dd49ed73" class="">Conceptos en Programación Orientada a Objetos</h2><p id="ae37d69a-b024-4a02-bc26-e026487ef76e" class="">Hemos visto y clasificado algo llamado “Clases”, “Objetos” y “Propiedades”, pero nos hace falta algo muy importante, lo cual se llama “Métodos”, tal vez les suene esta palabra si han trabajado lenguajes de programación orientado a objetos como Java o C#, aquí la idea, es que estos métodos, son las posibles acciones que puede hacer nuestro personaje (si consideramos el ejemplo anterior claro está), pero pensemos en lo siguiente, sin importar qué tipo de raza sea, nosotros como personaje siempre podremos realizar las mismas acciones, como “Atacar”, “Correr”, “Caminar”, etc. Ahí está la idea de los “métodos”, son las acciones que se puede realizar o en términos técnicos, un algoritmo que debe de seguir.</p><p id="15dae0ba-4abf-4db7-b348-3ac65d22708e" class=""><strong>Clases: </strong>Una clase será considerada como el molde del cuál se podrán distintos tipos de objetos.</p><p id="d2ba748f-f3c5-4d9c-97ff-6d6ff2c56a0b" class=""><strong>Objetos:</strong> Son aquellos que provienen de una clase, cada objeto tendrá sus propias características, pero eso si, todos los objetos que provienen de una misma clase tendrán los mismos métodos, algoritmos o acciones, como quieras llamarlo, recordemos el ejemplo anterior del personaje.</p><p id="ca38ccbf-6403-4947-94dd-510396f5eb72" class=""><strong>Propiedades: </strong>Son las características de los objetos, como lo era la Vida, Poder, Velocidad.</p><p id="0a3fe653-8653-4a48-bd1d-c4beb8873aa4" class=""><strong>Métodos: </strong>Son las acciones o algortimos que puede desarrollar los objetos en sí.</p><h2 id="c6067a70-8145-45bf-ba9e-d021859da0e4" class="">Pilares de la Programación Orientada a Objetos</h2><p id="fbdc9bf5-a02e-470e-965e-c42b2f6440c4" class="">¡Super!, con esto tenemos declarados los conceptos base de la programación orientada a objetos, pero, nuevamente los invito a pensar por un momento, cuál es la limitación que nos genera esta base, ¿a qué se nos restringe?, recordemos que la programación orientada a objetos está basada en objetos, muy bien, existen las clases y a partir de ellas podremos crear nuestros objetos, estos objetos podran tener distintos valores en sus propiedades, como lo era Vida, Poder, Velocidad y al mismo tiempo tendrán los mismo métodos o acciones a realizar. Ok, a primera no hay nada malo con este sistema, pero la realidad es que no será escalable, por ejemplo, algo que no mencioné es que todos los objetos que se crean tendran obligatoriamente la misma series de pasos para realizar cierta acción, con esto me refiero a que todas las razas atacan igual. Ok… ¿Y qué tiene de malo?, la desventaja es que nos estamos limitando, sería muchísimo más divertido hacer que un humano ataque con su arma, un elfo ataque con magia y que el tanque ataque a quienes tienen cerca, interesante ¿No?, pero si consideramos nuestro modelo actual, deberíamos de crear varias clases o moldes para los distintos tipos de razas, un molde para elfos, otro para humanos, y así sucesivamente. Pero a fin de cuentas estaremos repitiendo código (se verá más adelante cuando trabajemos con scripts en Unity) y esto no es eficiente, es por eso que existen pilares para cualquier tipo de requerimiento.</p><ol type="1" id="d406bd00-070f-4012-8200-2f036b432c26" class="numbered-list" start="1"><li><strong>Encapsulamiento:</strong> Este pilar nos permitirá ocultar comportamientos, haciendo que estos sean accesibles a traves de una interfaz, ¿Interfaz?, así es, con esto me refiero a un método o función que facilita la forma en la cual se acceden a las propiedades, ya que estas son muy sensibles a los cambios, nuevamente, quedemos a la expectativa porque todos estos pilares son abstractos y su uso se ve en el código.</li></ol><ol type="1" id="9667d7b4-f4f5-4d2d-88d7-7c127b012fce" class="numbered-list" start="2"><li><strong>Herencia:</strong> Es la capacidad de poder crear clases a partir de otras clases, ¿Cómo?, si volvemos a nuestro ejemplo anterior, podemos crear una clase o molde que sea “Personaje”, para a partir de ahí crear otras clases que tengan las mismas características o propiedades de nuestro “Personaje”, sin la necesidad de repetir código, esto es super útil porque hace que todo tenga un flujo, a partir de “Personaje” derivan las clases “Ogro”, “Elfo”, “Humano”, etc. Después se darán muchos ejemplos.</li></ol><ol type="1" id="ab993727-d725-425e-9567-792373396f40" class="numbered-list" start="3"><li><strong>Polimorfismo:</strong> Como su nombre lo dice. <strong>Poli-</strong>, muchas, <strong>-morfismo</strong>, formas. Con esto me refiero a que podemos hacer una accion de muchas formas, por ejemplo, si atacamos podemos utilizar un arco, espada, ¿rocas?, el límite es nuestra imaginación. </li></ol><ol type="1" id="0a338b68-a7b1-403f-a949-8c31b9ced4fb" class="numbered-list" start="4"><li><strong>Abstracción:</strong> Es prácticamente el beneficio de la programación orientada a objetos, este pilar nos dice que podemos simplificar comportamientos y clases utilizando abstracciones, este término es recursivo, pero en teoría quedemonos con el poder simplificar todo utilizando clases, objetos e interfaces.</li></ol><p id="0ec7685a-d5fc-4bea-bdad-7d667a149623" class="">
+</p></div></article></body></html>
